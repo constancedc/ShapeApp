@@ -17,6 +17,8 @@ public class DrawingUIController extends JPanel{
     private ShapeSelector sSel;
     private ColourSelector cSel;
     private CircleDimsSelector circDims;
+    private RectDimsSelector rectDims;
+    private SquaresDimsSelector squareDims;
 
 
     public DrawingUIController(){
@@ -26,6 +28,8 @@ public class DrawingUIController extends JPanel{
         sSel=new ShapeSelector();
         cSel=new ColourSelector();
         circDims=new CircleDimsSelector();
+        rectDims=new RectDimsSelector();
+        squareDims=new SquaresDimsSelector();
         drawing.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -40,11 +44,11 @@ public class DrawingUIController extends JPanel{
                    drawing.repaint();
                }
                 else if(sSel.getCurrentShape()==2){
-                    drawing.addRect(mouseEvent.getPoint(),cSel.getCurrentColour(), 30,20);
+                    drawing.addRect(mouseEvent.getPoint(),cSel.getCurrentColour(), rectDims.getRectWidth(),rectDims.getRectHeight());
                     drawing.repaint();
                 }
                 if(sSel.getCurrentShape()==3){
-                    drawing.addSquare(mouseEvent.getPoint(),cSel.getCurrentColour(), 30);
+                    drawing.addSquare(mouseEvent.getPoint(),cSel.getCurrentColour(),squareDims.getSquareSide());
                     drawing.repaint();
                 }
 
@@ -80,6 +84,8 @@ public class DrawingUIController extends JPanel{
         controlsPanel.add(cSel);
         //label.setBackground(Color.red);
         controlsPanel.add(circDims);
+        controlsPanel.add(rectDims);
+        controlsPanel.add(squareDims);
 
     }
 

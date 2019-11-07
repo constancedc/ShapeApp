@@ -3,17 +3,23 @@ package drawingUI;
 import shapes.Circle;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class CircleDimsSelector extends JPanel {
-    private JSlider radius;
-
+    private JSlider radiusSlider ;
     CircleDimsSelector(){
-        radius=new JSlider(1,100);
-        add(radius);
+
+        JPanel controls=new JPanel();
+        controls.setLayout(new GridLayout(2,1));
+        JLabel label=new JLabel(" Circle Radius");
+        radiusSlider=new JSlider(1,100);
+        controls.add(label);
+        controls.add(radiusSlider);
+        add(controls);
 
     }
 
     public int getCurrentRadius(){
-       return radius.getValue();
+       return radiusSlider.getValue();
     }
 }
