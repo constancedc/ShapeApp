@@ -16,6 +16,7 @@ public class DrawingUIController extends JPanel{
     private Drawing drawing;
     private ShapeSelector sSel;
     private ColourSelector cSel;
+    private CircleDimsSelector circDims;
 
 
     public DrawingUIController(){
@@ -24,6 +25,7 @@ public class DrawingUIController extends JPanel{
         drawing=new Drawing();
         sSel=new ShapeSelector();
         cSel=new ColourSelector();
+        circDims=new CircleDimsSelector();
         drawing.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -34,7 +36,7 @@ public class DrawingUIController extends JPanel{
             public void mousePressed(MouseEvent mouseEvent) {
 
                if(sSel.getCurrentShape()==1){
-                   drawing.addCircle(mouseEvent.getPoint(),cSel.getCurrentColour(), 30);
+                   drawing.addCircle(mouseEvent.getPoint(),cSel.getCurrentColour(), circDims.getCurrentRadius());
                    drawing.repaint();
                }
                 else if(sSel.getCurrentShape()==2){
@@ -77,6 +79,7 @@ public class DrawingUIController extends JPanel{
         controlsPanel.add(sSel);
         controlsPanel.add(cSel);
         //label.setBackground(Color.red);
+        controlsPanel.add(circDims);
 
     }
 
