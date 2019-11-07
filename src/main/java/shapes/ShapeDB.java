@@ -7,6 +7,7 @@ public class ShapeDB {
     private ArrayList<Shape> shapes;
 
     ShapeDB() {
+
         shapes = new ArrayList<Shape>();
     }
 
@@ -15,13 +16,13 @@ public class ShapeDB {
         shapes.add(c);
     }
 
-    private void addSquare(Point pos, Color col, int side) {
+   void addSquare(Point pos, Color col, int side) {
         Square s = new Square(pos, col, side);
         shapes.add(s);
 
     }
 
-    private void addRect(Point pos, Color col, int w, int h) {
+    void addRect(Point pos, Color col, int w, int h) {
         Rect r = new Rect(pos, col, w, h);
         shapes.add(r);
     }

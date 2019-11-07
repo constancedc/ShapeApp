@@ -28,7 +28,7 @@ public class Drawing extends Canvas {
         setupCanvas();
         setupFrame();
         shapeDB.addCircle(p1,q1,200);
-
+        shapeDB.addRect(p2,q2,100,100);
     }
 
 
@@ -41,7 +41,7 @@ public class Drawing extends Canvas {
         f = new Frame("My window"); // Instantiates the Frames
         f.add(this); // Adds the Canvas to the Frame
         f.setLayout(null); // Stops the frame from trying to layout contents
-        f.setSize(400, 400); // Sets the dimensions of the frame
+        f.setSize(600, 400); // Sets the dimensions of the frame
         f.setVisible(true);
         f.addWindowListener(new WindowAdapter() {    // Closes the frame if close window clicked
             public void windowClosing(WindowEvent e) {
@@ -54,5 +54,22 @@ public class Drawing extends Canvas {
         shapeDB.drawShapes(g);
     }
 
-}
+    public void addCircle(Point pos, Color col, int radius) {
+        Circle c = new Circle(pos, col, radius);
+        shapeDB.addCircle(pos,col,radius);
+    }
+
+    public void addSquare(Point pos, Color col, int side) {
+        Square s = new Square(pos, col, side);
+        shapeDB.addSquare(pos,col,side);
+
+    }
+
+    public void addRect(Point pos, Color col, int w, int h) {
+        Rect r = new Rect(pos, col, w, h);
+        shapeDB.addRect(pos,col,w,h);
+    }
+
+
+    }
 
