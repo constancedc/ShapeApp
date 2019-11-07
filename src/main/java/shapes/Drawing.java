@@ -12,23 +12,12 @@ public class Drawing extends Canvas {
     private Frame f; //3
 
 
-    Point p1=new Point(200,200); //parameters
-    Color q1=new Color(0x992266);
-    Point p2=new Point (100, 100);
-    Color q2=new Color(293333);
     ShapeDB shapeDB=new ShapeDB();
 
 
     public Drawing() {//Constructor
-
-        c= new Circle(p1,q1,200); //instantiates the circle
-        r= new Rect(p2,q2,200,100);
-        s= new Square(p1,q2,40);
-
         setupCanvas();
         setupFrame();
-        shapeDB.addCircle(p1,q1,200);
-        shapeDB.addRect(p2,q2,100,100);
     }
 
 

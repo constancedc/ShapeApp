@@ -8,6 +8,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class DrawingUIController extends JPanel{
     private JPanel controlsPanel;
@@ -19,11 +20,12 @@ public class DrawingUIController extends JPanel{
     private CircleDimsSelector circDims;
     private RectDimsSelector rectDims;
     private SquaresDimsSelector squareDims;
-
+    private CountShapes counter;
 
     public DrawingUIController(){
         controlsPanel=new JPanel();
         mainPanel=new JPanel();
+        counter=new CountShapes();
         drawing=new Drawing();
         sSel=new ShapeSelector();
         cSel=new ColourSelector();
@@ -42,14 +44,21 @@ public class DrawingUIController extends JPanel{
                if(sSel.getCurrentShape()==1){
                    drawing.addCircle(mouseEvent.getPoint(),cSel.getCurrentColour(), circDims.getCurrentRadius());
                    drawing.repaint();
+                   counter.addscorecircle(counter.returncirc());
+
+
                }
                 else if(sSel.getCurrentShape()==2){
                     drawing.addRect(mouseEvent.getPoint(),cSel.getCurrentColour(), rectDims.getRectWidth(),rectDims.getRectHeight());
                     drawing.repaint();
+                    counter.addscorerect(counter.returnrect());
+
                 }
                 if(sSel.getCurrentShape()==3){
                     drawing.addSquare(mouseEvent.getPoint(),cSel.getCurrentColour(),squareDims.getSquareSide());
                     drawing.repaint();
+                    counter.addscoresquare(counter.returnsquare());
+
                 }
 
 
@@ -70,15 +79,18 @@ public class DrawingUIController extends JPanel{
 
             }
         });
+
         GridLayout grid=new GridLayout(3,1);
         GridLayout grid2=new GridLayout(2,1);
         controlsPanel.setLayout(grid);
         mainPanel.setLayout(grid2);
+        counter.setLayout(new GridLayout(3,1));
         //mainPanel.setBackground(Color.blue);
         label=new JLabel("text 1");
         label.setOpaque(true);
         mainPanel.setBorder(new LineBorder(Color.BLACK));
         mainPanel.add(controlsPanel);
+        mainPanel.add(counter);
         mainPanel.add(drawing);
         controlsPanel.add(sSel);
         controlsPanel.add(cSel);
